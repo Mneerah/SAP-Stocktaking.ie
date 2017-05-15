@@ -18,17 +18,17 @@
 			$sql = "SELECT 	CustomerStoreId, CustomerId, StoreName, Address1, Town	
             		FROM    tblCustomerStores 
 					WHERE CustomerId= $d;";
-		    $result = mysqli_query($conn, $sql); 
+		    $result = mssql_query($conn, $sql); 
 		    //if sql succeed
-			if (mysqli_num_rows($result) > 0) 
+			if (mssql_num_rows($result) > 0) 
 			{
-				while($row = mysqli_fetch_assoc($result)) 
+				while($row = mssql_fetch_assoc($result)) 
 				{
 					$storeslist .=	'<p id="">
-											<input type="checkbox" name="Stores[]"  
-													value="'. $row["CustomerStoreId"].'"> '
-											. $row["StoreName"].' '. $row["Address1"].', '.$row["Town"]
-											.'</p>';
+							<input type="checkbox" name="Stores[]"  
+								value="'. $row["CustomerStoreId"].'"> '
+							. $row["StoreName"].' '. $row["Address1"].', '.$row["Town"]
+							.'</p>';
 				}
 			}
 			else
@@ -37,7 +37,7 @@
 			}	
 		}//close for loop 
 
-		mysqli_close($conn);
+		mssql_close($conn);
 		echo $storeslist.'<br>';
 	}
 
