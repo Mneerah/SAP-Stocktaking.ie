@@ -118,11 +118,11 @@ class dayJobs {
                     and     tblStockTakes.StockTakeDate >='$fullDate1'
                     and     tblStockTakes.StockTakeDate <='$fullDate2';";
 
-            $result = mysqli_query($conn, $sql);
+            $result = mssql_query($conn, $sql);
             //==================================start loop ONE on $result========================================================
-            if (mysqli_num_rows($result)>0) {
+            if (mssql_num_rows($result)>0) {
                 //----------------loop in stores stocktakes ----------------------
-                while($storeRows = mysqli_fetch_assoc($result)) {
+                while($storeRows = mssql_fetch_assoc($result)) {
                     //echo implode( ", ", $storeRows );
                     $time=substr($storeRows["ST_Date"], -8, 5);
                     if (in_array(($storeRows["S_County"]), $Connacht)) $Region= "Connacht";
@@ -147,10 +147,10 @@ class dayJobs {
                     //CONTINUE HERE
                     $supervisor=$storeRows["SUP_ID"];
                     $sql_2 = "SELECT UserId,FirstName,LastName, CanDrive, CarGroup FROM tblUsers where UserId='$supervisor'";
-                    $result_2 = mysqli_query($conn, $sql_2);
+                    $result_2 = mssql_query($conn, $sql_2);
                     //$currentjobs.="         <H6>Supervisor</H6> ";//open supervisor
-                    if (mysqli_num_rows($result_2)>0){
-                        $supervisorRow = mysqli_fetch_assoc($result_2);
+                    if (mssql_num_rows($result_2)>0){
+                        $supervisorRow = mssql_fetch_assoc($result_2);
                         $JobStaff.= '        <span id="'. $supervisorRow["UserId"].'" class="jobAssignedStaff" 
                                                     draggable="true" ondragstart="drag(event)" > <b>' 
                                                     .$supervisorRow["FirstName"].' '.$supervisorRow["LastName"].'</b>
@@ -164,15 +164,15 @@ class dayJobs {
                     
                     $stocktakeID=$storeRows["ST_ID"];
                     $sql_3="SELECT  UserId, IsDriver from tblStockTakeUsers where StockTakeId='$stocktakeID';";
-                    $result_3 = mysqli_query($conn, $sql_3);
-                    if (mysqli_num_rows($result_3)>0)
+                    $result_3 = mssql_query($conn, $sql_3);
+                    if (mssql_num_rows($result_3)>0)
                     {
-                       while($staffRows = mysqli_fetch_assoc($result_3)) 
+                       while($staffRows = mssql_fetch_assoc($result_3)) 
                        {
                             //-------------select staff info-----------------------
                             $staffID=$staffRows["UserId"];
                             $sql_4 = "SELECT FirstName,LastName, CanDrive, CarGroup FROM tblUsers where UserId='$staffID' ;";
-                            $result_4 = mysqli_query($conn, $sql_4);
+                            $result_4 = mssql_query($conn, $sql_4);
 
                             while($assignedRows = $result_4->fetch_assoc())
                             {
@@ -201,7 +201,7 @@ $staffMem.='<span id="'. $staffID.'" class="jobAssignedStaff deleteStaff " dragg
             return "0 results";
         }
         return $currentjobs;
-        mysqli_close($conn);
+        mssql_close($conn);
     }
 //--------------------------------------------------------------------------
 
