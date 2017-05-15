@@ -49,11 +49,11 @@ $password=$_POST["password"];
 
 $sql = "SELECT Username, Password FROM tblUsers where Username='$username' AND Password='$password'";
 
-$result = mysqli_query($conn, $sql);
+$result = mssql_query($conn, $sql);
 
-if (mysqli_num_rows($result) > 0) {
+if (mssql_num_rows($result) > 0) {
     // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
+    while($row = mssql_fetch_assoc($result)) {
          //if there is a text, and surely there will be, because i already checked that in the index page.
             //initialize the hint string.. 
             $hint="";
