@@ -86,10 +86,10 @@ else
 		//$CarGroup=$_GET["CarGroup"];
 		//$info=$_GET["info"];
 		//echo $date."???";
-		$result = mysqli_query($conn, $sql);
-		if (mysqli_num_rows($result) > 0) {
+		$result = mssql_query($conn, $sql);
+		if (mssql_num_rows($result) > 0) {
 		    // output data of each row
-		    while($row = mysqli_fetch_assoc($result)) {
+		    while($row = mssql_fetch_assoc($result)) {
 		    		$staffInfo="";
 $Classes ="";
 		    		//$Classes ="CarGroup".$row["CarGroup"]." ";
@@ -126,5 +126,5 @@ $Classes ="";
 		    echo "0 results";
 		}
 
-		mysqli_close($conn);
+		mssql_close($conn);
 ?>
