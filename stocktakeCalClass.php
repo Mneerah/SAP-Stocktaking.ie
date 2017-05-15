@@ -412,11 +412,11 @@ class EasyWeeklyCalClass {
                     WHERE AvailabilityDate  >= '$fullDate1'
                     AND   AvailabilityDate  <= '$fullDate2';";
 
-            $result = mysqli_query($conn, $sql);
+            $result = mssql_query($conn, $sql);
             //echo $result;
-            if (mysqli_num_rows($result)>0) 
+            if (mssql_num_rows($result)>0) 
             {
-                $row = mysqli_fetch_assoc($result);
+                $row = mssql_fetch_assoc($result);
                 return $row["num"];
             } else {
                 return null;
@@ -479,7 +479,7 @@ class EasyWeeklyCalClass {
                     ORDER BY tblStockTakes.StockTakeDate ASC  ;";
 
             
-            $result = mysqli_query($conn, $sql);
+            $result = mssql_query($conn, $sql);
             //echo $result;
             $Region="";
             /*
@@ -497,9 +497,9 @@ class EasyWeeklyCalClass {
             $Ulster=    array(45, 49,50,51,52, 58,59,61,62);
 //------------------------------------------------------------------------
             $currentjobs="";
-            if (mysqli_num_rows($result)>=0) {
+            if (mssql_num_rows($result)>=0) {
                  //output data of each 
-                while($row = mysqli_fetch_assoc($result)) {
+                while($row = mssql_fetch_assoc($result)) {
                     if (in_array(($row["S_County"]), $Connacht)) $Region= "Connacht";
                     if (in_array(($row["S_County"]), $Munster)) $Region= "Munster";
                     if (in_array(($row["S_County"]), $Leinster)) $Region= "Leinster";
@@ -520,7 +520,7 @@ $status= $row["ST_STATUS"];
             }
                     return $currentjobs;
 
-            mysqli_close($conn);
+            mssql_close($conn);
 }
 //--------------------------------------------------------------------------
 
