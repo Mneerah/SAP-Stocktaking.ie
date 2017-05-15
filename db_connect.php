@@ -4,7 +4,7 @@
 */
  
 // Connect to the database (host, username, password)
-$con = mssql_connect('localhost','sa','foo') 
+$conn = mssql_connect('localhost','sa','foo') 
     or die('Could not connect to the server!');
  
 // Select a database:
