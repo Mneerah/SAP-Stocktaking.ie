@@ -52,10 +52,10 @@
 							$Ulster= 	array(45, 49,50,51,52, 58,59,61,62);
 
 							$SupervisorIsSet="<b>&#10006;</b> No Team Leader assigned yet.";
-							$result = mysqli_query($conn, $sql);
+							$result = mssql_query($conn, $sql);
 							//echo $result;
-							if (mysqli_num_rows($result) > 0) {
-								while($row = mysqli_fetch_assoc($result)) {
+							if (mssql_num_rows($result) > 0) {
+								while($row = mssql_fetch_assoc($result)) {
 							    // output data of each row
 									if (in_array(($row["S_County"]), $Connacht)) $Region= "Connacht";
 							    	if (in_array(($row["S_County"]), $Munster)) $Region= "Munster";
@@ -110,7 +110,7 @@
 							    echo "0 results";
 							}
 
-							mysqli_close($conn);
+							mssql_close($conn);
 
 						?>
   					
