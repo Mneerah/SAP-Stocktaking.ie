@@ -21,11 +21,11 @@
 		            		FROM    tblCustomerStores 
 							WHERE CustomerStoreId= $d;";
 				
-		    $result = mysqli_query($conn, $presql); 
+		    $result = mssql_query($conn, $presql) or die('A error occured: ' . mysql_error()); 
 		    //if sql succeed
-			if (mysqli_num_rows($result) > 0) 
+			if (mssql_num_rows($result) > 0) 
 			{
-				while($row = mysqli_fetch_assoc($result)) 
+				while($row = mssql_fetch_assoc($result)) 
 				{
 					
 					$sql = "INSERT INTO `tblStockTakes` 
@@ -53,7 +53,7 @@
 			}	
 		}//close for loop 
 
-		mysqli_close($conn);
+		mssql_close($conn);
 	}
 
 ?>
