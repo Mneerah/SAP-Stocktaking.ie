@@ -40,7 +40,7 @@
 		    echo "-Error updating record: " . $conn->error."<br>";
 		}
 	}		
-	mysqli_close($conn);
+	mssql_close($conn);
 
 
 ?>
