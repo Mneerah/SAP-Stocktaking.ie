@@ -18,12 +18,11 @@ $hint =$_GET['hint'];
                 FROM    tblCustomers ORDER BY CustomerName1;";
 }
 	
-
-    $result = mysqli_query($conn, $sql);
+    $result = mssql_query($sql) or die('A error occured: ' . mysql_error());
     //if sql succeed
-	if (mysqli_num_rows($result) > 0) 
+	if (mssql_num_rows($result) > 0) 
 	{
-		while($row = mysqli_fetch_assoc($result)) 
+		while($row = mssql_fetch_assoc($result)) 
 		{
 			echo
 				'<input type="checkbox" name="Customers[]" 
@@ -40,5 +39,5 @@ $hint =$_GET['hint'];
     	echo "0 results";
 	}
 
-	mysqli_close($conn);
+	mssql_close($conn);
 ?>
