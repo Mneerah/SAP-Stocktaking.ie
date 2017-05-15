@@ -62,7 +62,7 @@ echo "<script>window.close();</script>";
 					    echo "-Error updating record: " . $conn->error."<br>".$button;
 					}
 
-					mysqli_close($conn);
+					mssql_close($conn);
 			?>		
 		</div>
 				
