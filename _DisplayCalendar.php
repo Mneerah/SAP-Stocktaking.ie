@@ -551,11 +551,11 @@ class StaffCalendarClass {
                     AND   AvailabilityDate  <= '$fullDate2'
                     AND (UserId)=$id;";
             //echo $sql;
-            $result = mysqli_query($conn, $sql);
+            $result = mssql_query($conn, $sql);
             //echo $result;
-            if (mysqli_num_rows($result)>0) 
+            if (mssql_num_rows($result)>0) 
             {
-                $row = mysqli_fetch_assoc($result);
+                $row = mssql_fetch_assoc($result);
                 //echo $row['num'];
                 if($row['num']>=1)
                 	return "IAmAvailable";
