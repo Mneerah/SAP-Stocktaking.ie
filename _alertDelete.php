@@ -20,7 +20,7 @@
 		WHERE `StockTakeId` ='$stocktake'
 AND `UserId` ='$staff'";
 
-		$result = mysqli_query($conn, $sql);
+		$result = mssql_query($conn, $sql);
 		if ($conn->query($sql) === TRUE) {
 			//echo "Stocktake Deleted successfully";
 echo "<script>window.close();</script>";
@@ -28,7 +28,7 @@ echo "<script>window.close();</script>";
 		    echo "Error updating record: " . $conn->error;
 		}
 		
-	mysqli_close($conn);
+	mssql_close($conn);
 
 ?>
 </body>
