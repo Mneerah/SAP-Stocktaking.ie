@@ -1,5 +1,19 @@
 <?php
-        $servername = "localhost";
+        /*
+** Connect to database:
+*/
+ 
+// Connect to the database (host, username, password)
+$con = mssql_connect('localhost','sa','foo') 
+    or die('Could not connect to the server!');
+ 
+// Select a database:
+mssql_select_db('Test') 
+    or die('Could not select a database.');
+ 
+
+/*
+$servername = "localhost";
         $username = "root";
         $password = "";
         $dbname = "dbo";
@@ -12,6 +26,7 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 
+        */
 
         //echo "Connected successfully";
         //session_start();// Starting Session
